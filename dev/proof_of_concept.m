@@ -5,7 +5,7 @@
 %%			    	ref-rx line and different rows
 %%
 %% 2) intX_col, intY_col     -> Points of intersection b/w
-%% 			    	ref-rx line and different rows
+%% 			    	ref-rx line and different columns
 %%
 %% 3) row_quadrature_int     -> Absolute difference b/w intY_row and
 %%			    	quadrature component of rx symbol, used for
