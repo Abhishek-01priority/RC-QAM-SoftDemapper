@@ -28,18 +28,21 @@ max_iterations	= 30;
 dist		= 2;				% Distance between two symbols in same row/coloumn-Unormalized
 M		= 16; 				% Modulation order
 SnrdB		= 15 
-alpha	= atan(1/sqrt(M)); 	% Angle to rotate the Modulation
-pl_fg	= 1;			% Plot flag to plot everything or nothing
+alpha		= atan(1/sqrt(M)); 		% Angle to rotate the Modulation
+hI		= 0.9;				% Fading for inphase component
+hQ		= 0.5;				% Fading for quadrature component
+pl_fg		= 1;				% Plot flag to plot everything or nothing
 
 % II - Data generation
 d	= qammod(0:M-1,M); 	% unrotated QAM constellation
 d	= d .* exp(1i * alpha);		% Rotated QAM
 
-% III - Noise addition
+% III - Noise and fading addition
 sigPwr	= sum(abs(d).^2)/length(d);
 noise	= diag(sqrt(sigPwr)) .* randn(1,length(d)) * 10^(-SnrdB/20) +...
 	  1i * diag(sqrt(sigPwr)) .* randn(1,length(d)) * 10^(-SnrdB/20);
-rx	= d + noise; 
+rx	= d + noise;
+rx	= hI * real(rx) + 1i * hQ * imag(rx); 
 
 printf("true_row|estimated_row - true_col|estimated_col\n");
 for iter = 1:max_iterations
@@ -71,9 +74,13 @@ for iter = 1:max_iterations
 	endif
 	
 	printf("%d|%d - %d|%d\n", true_row,estimated_row, true_col,estimated_col);				  
+	figure(1); hold on; plot(d,'cx');
+
 	if (true_row != estimated_row || true_col != estimated_col)
 		keyboard
 	endif
+
+	%keyboard
 	clf(1);
 endfor
 
