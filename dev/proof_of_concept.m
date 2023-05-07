@@ -1,13 +1,31 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Proof of Concept code used with TB
+%% Brief of variables	:
+%% 1) intX_row, intY_row     -> Points of intersection b/w
+%%			    	ref-rx line and different rows
+%%
+%% 2) intX_col, intY_col     -> Points of intersection b/w
+%% 			    	ref-rx line and different rows
+%%
+%% 3) row_quadrature_int     -> Absolute difference b/w intY_row and
+%%			    	quadrature component of rx symbol, used for
+%%			    	estimating the row 
+%%
+%% 4) row_min1_quadphase_loc,
+%%    row_min2_quadphase_loc -> 1st and 2nd min index of row_quadrature_int
+%%
+%% 5) col_inphase_int        -> Absolute difference b/w intX_col and
+%%			    	inphase component of rx symbol, used for
+%%			    	estimating the column 
+%% 6) col_min1_inphase_loc,
+%%    col_min2_inphase_loc   ->	1st and 2nd min index of col_inphase_int
 %% 
 %% Input arguments	: none
-%% Output arguments	: estimated_row, estimated_col
+%% Output arguments	: estimated_row, estimated_col, dv (intermediate output)
 %%
 %% Author		: Abhishek K.M. (priority01abhishek@gmail.com)
 %% Date of creation	: 23-04-2023
-%% Date of modification : 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [estimated_row, estimated_col, dv] = proof_of_concept()
 global pl_fg
 global alpha
