@@ -10,8 +10,8 @@
 %% Across every bit's every set (set 0 and set 1), the minimum of those
 %% rows/columns are taken for final LLR calculation 
 %%
-%% Instead of calculating the euclidian for all rows and/or columns, calculate
-%% the one closets to rx sym. 
+%% Instead of calculating the euclidian for all rows and/or columns in every
+%% set, calculate the one closets to rx sym. 
 %% 
 %% Input arguments	: estimated_row, estimated_col
 %% Output arguments	: target_syms
