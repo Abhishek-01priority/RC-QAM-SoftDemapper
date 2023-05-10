@@ -10,7 +10,7 @@
 %% 			  		-->bit3[2]->set0, set1
 %%
 %% Author		: Abhishek K.M. (priority01abhishek@gmail.com)
-%% Date of creation	: 07-05-2023
+%% Date of creation	: 10-05-2023
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function dist = calc_distance(target_row,target_col,target_syms)
 dist = struct(); bit = struct(); set = struct();
