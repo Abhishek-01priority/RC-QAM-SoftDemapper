@@ -136,10 +136,3 @@ dv.estimated_col                = estimated_col;
 %	clf(1);
 %endif
 endfunction
-
-
-
-
-
-
-
