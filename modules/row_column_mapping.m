@@ -23,8 +23,8 @@
 %% Author		: Abhishek K.M. (priority01abhishek@gmail.com)
 %% Date of creation	: 07-05-2023
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function target_sym = row_column_mapping(estimated_row, estimated_col)
-target_sym = struct(); bit = struct(); set = struct();
+function target_syms = row_column_mapping(estimated_row, estimated_col)
+target_syms = struct(); bit = struct(); set = struct();
 
 % BIT 0
 target_syms.bit(1).set(1).row = estimated_row;
@@ -35,7 +35,7 @@ if estimated_col == 1 || estimated_col == 2
 else
 	target_syms.bit(1).set(1).col = 2;
 	target_syms.bit(1).set(2).col = estimated_col;
-endif
+end
 
 % BIT 1
 target_syms.bit(2).set(1).row = estimated_row;
@@ -52,18 +52,19 @@ elseif estimated_col == 2
 else
 	target_syms.bit(2).set(1).col = 4;
 	target_syms.bit(2).set(2).col = estimated_col;
-endif
+end
  
 % BIT 2
 target_syms.bit(3).set(1).col = estimated_col;
 target_syms.bit(3).set(2).col = estimated_col;
 if estimated_row == 1 || estimated_row == 2
-	target_syms.bit(3).set(1).row = estimated_row;
-	target_syms.bit(3).set(2).row = 3;
+	target_syms.bit(3).set(1).row = 3;
+	target_syms.bit(3).set(2).row = estimated_row;
 else
-	target_syms.bit(3).set(1).col = 2;
-	target_syms.bit(3).set(2).col = estimated_row;
-endif
+	target_syms.bit(3).set(1).row = estimated_row;
+	target_syms.bit(3).set(2).row = 2;
+end
+
 
 % BIT 3
 target_syms.bit(4).set(1).col = estimated_col;
@@ -71,15 +72,15 @@ target_syms.bit(4).set(2).col = estimated_col;
 if estimated_row == 1
 	target_syms.bit(4).set(1).row = estimated_row;
 	target_syms.bit(4).set(2).row = 2;
-elseif estimated_col == 4
+elseif estimated_row == 4
 	target_syms.bit(4).set(1).row = estimated_row;
 	target_syms.bit(4).set(2).row = 3;
-elseif estimated_col == 2
+elseif estimated_row == 2
 	target_syms.bit(4).set(1).row = 1;
 	target_syms.bit(4).set(2).row = estimated_row;
 else
 	target_syms.bit(4).set(1).row = 4;
 	target_syms.bit(4).set(2).row = estimated_row;
-endif
+end
 
-endfunction	
+end
